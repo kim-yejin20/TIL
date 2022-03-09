@@ -1,9 +1,10 @@
 ## 목차
 
-[1. concat() : 배열 합치기](<#concat()>)  
-[2. push(), unshift() : 배열에 항목 추가](<#push(),-unshift()>)  
-[3. pop(), shift() : 배열에 항목 제거](<#pop(),-shift()>)  
-[4. reduce() : ](<#reduce()>)
+[0. 함수와 메소드 차이](#0.-함수와-메소드-차이)  
+[1. concat() : 배열 합치기](<#1.-concat()>)  
+[2. push(), unshift() : 배열에 항목 추가](<#2.-push(),-unshift()>)  
+[3. pop(), shift() : 배열에 항목 제거](<#3.-pop(),-shift()>)  
+[4. reduce() : ](<#4.-reduce()>)
 
 <br>
 <hr>
