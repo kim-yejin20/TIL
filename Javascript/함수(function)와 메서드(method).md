@@ -59,10 +59,10 @@ console.log(arr1.concat(arr2, arr3));
 ```javascript
 const arr = [1, 2, 3, 4, 5];
 
-console.log(arr.push('끝')); // 6
+console.log(arr.push("끝")); // 6
 console.log(arr); // [ 1, 2, 3, 4, 5, '끝' ]
 
-console.log(arr.unshift('앞')); // 7
+console.log(arr.unshift("앞")); // 7
 console.log(arr); // [ '앞', 1, 2, 3, 4, 5, '끝' ]
 ```
 
@@ -92,9 +92,14 @@ console.log(arr); // [ 2, 3 ]
 
 ## 4. reduce()
 
-배열의 각 요소에 대해 reducer 함수를 실행
+배열의 각 요소에 대해 reducer 함수를 실행한다.
+
+<br>
+<h3>구문</h3>
 
 `arr.reduce(callback[, initialValue])`
+
+<br>
 
 - 누적 계산의 결과 값을 반환.
 
@@ -157,7 +162,7 @@ sum.reduce(function (a, b) {
 #### (3) 객체 내의 값 인스턴스 개수 세기
 
 ```javascript
-const arr = ['Python', 'Javascript', 'C', 'Javascript', 'Java'];
+const arr = ["Python", "Javascript", "C", "Javascript", "Java"];
 const count = arr.reduce(function (a, b) {
   if (b in a) {
     a[b]++;
@@ -170,5 +175,3 @@ const count = arr.reduce(function (a, b) {
 console.log(count);
 // -> { Python: 1, Javascript: 2, C: 1, Java: 1 }
 ```
-
-
