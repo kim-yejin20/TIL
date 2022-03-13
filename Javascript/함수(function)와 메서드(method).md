@@ -291,7 +291,7 @@ console.log(anyString.substring(0, 17)); // 'AaBbCcDdEe'
 
 - `beginIndex` : 0부터 시작하는 추출 시작점 인덱스. 음수일 경우, `strLength(문자열 길이) + beginIndex`로 취급. `strLength `보다 크거나 같은 경우, slice()는 빈 문자열을 반환.
 
-- `endIndexOptional` : 0부터 시작하는 추출 종료점 인덱스로 "그 직전까지" 추출(인덱스 위치의 문자는 추출에 포함되지 않음!). 생략시, silce()는 문자열 마지막까지 추출. 음수라면, `strLength(문자열 길이) + endIndex` 로 취급.
+- `endIndexOptional` : 0부터 시작하는 추출 종료점 인덱스로 `그 직전까지 추출`(인덱스 위치의 문자는 추출에 포함되지 않음!). 생략시, silce()는 문자열 마지막까지 추출. 음수라면, `strLength(문자열 길이) + endIndex` 로 취급.
 
 <br>
 <h3>반환 값</h3>
@@ -299,10 +299,78 @@ console.log(anyString.substring(0, 17)); // 'AaBbCcDdEe'
 
 <br>
 <br>
-<h3>설명</h3>
+<h3>설명 예시</h3>
 
-- slice()는 endIndex를 포함하지 않고 추출합니다. str.slice(1, 4)는 두 번째 문자부터 네 번째 문자까지 추출합니다 (1, 2, 3 인덱스 문자).
-<span style="color:yellow">노란 글씨입니다.</span>
+- slice()는 endIndex를 포함하지 않고 추출한다. str.slice(1, 4)는 두 번째 문자부터 네 번째 문자까지 추출.
 
-<span style="font-size:23px; color:white; padding:5px 13px; background-color:#f29e74; ">1월 - 3월 </span>
-</h4>
+```javascript
+const str = '1234 567 890';
+
+console.log(str.slice(1, 4)); // '234'
+console.log(str.slice(1, 5)); // '234 '  -> 띄어쓰기 포함해서 추출
+```
+
+<br>
+
+- str.slice(2, -1)는 세 번째 문자부터 문자열의 마지막에서 두 번째 문자까지 추출.
+
+```javascript
+const str = '1234 567 890';
+
+console.log(str.slice(2, -1)); // '34 567 89'
+```
+
+<br>
+
+- slice()로 새 문자열 생성
+
+```javascript
+const str = '1234 567 890';
+const str1 = str.slice(1, 4);
+const str2 = str.slice(7);
+const str3 = str.slice(-4);
+
+console.log(str1); // '234'
+console.log(str2); // '7 890'
+console.log(str3); // ' 890'
+```
+
+<br>
+<h3> (4) 각각 차이점 </h3>
+
+- `substring()` 와 `substr()` 차이점  
+  `substring()`의 인수는 시작 및 끝 인덱스를 나타냄
+  `substr()`의 인수는 시작 인덱스와 반환된 문자열에 포함할 문자의 수를 나타냄
+
+```javascript
+const test = 'AbcDefgH';
+
+console.log(test.substring(2, 5)); // 'cDe'
+console.log(test.substr(2, 5)); // 'cDefg'
+console.log(test.substr(2, 3)); // 'cDe'
+```
+
+<br>
+
+- `substring()` 와 `slice()` 차이점  
+  시작인덱스가 끝 인덱스보다 클 경우, `substring()`는 두 인수를 교환해서 반환하고 `slice()`는 빈 문자열을 반환  
+  인수 중 하나 이상 음수인 경우, `substring()`는 인수를 있는 것처럼 처리하고 `slice()`는 Nan은 0으로 취급, 음수는 문자열 끝에서 역방향으로 계산
+
+```javascript
+const test = 'AbcDefgH';
+
+// 동일한 값 출력
+console.log(test.substring(2, 5)); // 'cDe'
+console.log(test.slice(2, 5)); // 'cDe'
+
+// 부정적인 인수 : 시작 인덱스 > 끝 인덱스 == 반환값 다름
+console.log(test.substring(5, 2)); // 'cDe'
+console.log(test.slice(5, 2)); // ''
+
+// 부정적인 인수 : 음수 인덱스
+console.log(test.substring(-5, 2)); // 'Ab'
+console.log(test.substring(-5, -2)); // ''
+
+console.log(test.slice(-5, 2)); // ''
+console.log(test.slice(-5, -2)); // 'Def'
+```
