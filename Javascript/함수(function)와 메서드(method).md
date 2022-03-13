@@ -209,7 +209,7 @@ console.log(string.substr(20, 3)); // ''
 
 <br>
 
-<h3> (1) substring() </h3>
+<h3> (2) substring() </h3>
 
 `substring()` : 문자열 객체의 시작 인덱스로부터 종료 인덱스 전까지 문자열의 부분 문자열을 반환한다.
 
@@ -274,3 +274,35 @@ console.log(anyString.substring(-1, 10)); // 'AaBbCcDdEe'
 console.log(anyString.substring(0, 10)); // 'AaBbCcDdEe'
 console.log(anyString.substring(0, 17)); // 'AaBbCcDdEe'
 ```
+
+<br>
+<br>
+<h3> (3) slice() </h3>
+
+`slice()` : 문자열의 일부를 추출하면서 `새로운 문자열`을 반환
+
+<br>
+<h3>구문</h3>
+
+`str.slice(beginIndex[, endIndex])`
+
+<br>
+<h3>매개변수</h3>
+
+- `beginIndex` : 0부터 시작하는 추출 시작점 인덱스. 음수일 경우, `strLength(문자열 길이) + beginIndex`로 취급. `strLength `보다 크거나 같은 경우, slice()는 빈 문자열을 반환.
+
+- `endIndexOptional` : 0부터 시작하는 추출 종료점 인덱스로 "그 직전까지" 추출(인덱스 위치의 문자는 추출에 포함되지 않음!). 생략시, silce()는 문자열 마지막까지 추출. 음수라면, `strLength(문자열 길이) + endIndex` 로 취급.
+
+<br>
+<h3>반환 값</h3>
+문자열의 추출된 부분을 담는 새로운 문자열이 반환
+
+<br>
+<br>
+<h3>설명</h3>
+
+- slice()는 endIndex를 포함하지 않고 추출합니다. str.slice(1, 4)는 두 번째 문자부터 네 번째 문자까지 추출합니다 (1, 2, 3 인덱스 문자).
+<span style="color:yellow">노란 글씨입니다.</span>
+
+<span style="font-size:23px; color:white; padding:5px 13px; background-color:#f29e74; ">1월 - 3월 </span>
+</h4>

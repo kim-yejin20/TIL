@@ -73,3 +73,22 @@ const one = 1
 - 영어는 소문자로 작성
 - 제목에 괄호()가 있을 경우에는 생략하는 것 같다.
 - 제목에 붙은 .도 -로 연결해주면 되는 것 같다 `3.이건이렇게` -> (#3-이건이렇게)
+
+<br>
+<br>
+
+# 7. 글씨 색 변경
+
+<span style="color:yellow">노란 글씨입니다.</span>
+
+- 글씨 자체 색 변경  
+  `<span style="color:yellow">노란 글씨입니다.</span>`
+
+<br>
+
+<span style="font-size:23px; color:white; padding:5px 13px; background-color:#f29e74; ">바탕색변경 </span>
+
+- 글씨 바탕 색 변경
+  `<span style="font-size:23px; color:white; padding:5px 13px; background-color:#f29e74; "> 바탕색변경 </span>`
+
+</h4>
