@@ -4,7 +4,8 @@
 [1. concat() : 배열 합치기](#1-concat)  
 [2. push(), unshift() : 배열에 항목 추가](#2-push-unshift)  
 [3. pop(), shift() : 배열에 항목 제거](#3-pop-shift)  
-[4. reduce() : ](#4-reduce)
+[4. reduce() : ](#4-reduce)  
+[5. substr(), substring(), slice() : 문자열 자르기 ](#5-substr-substring-slice)
 
 <br>
 <hr>
@@ -59,10 +60,10 @@ console.log(arr1.concat(arr2, arr3));
 ```javascript
 const arr = [1, 2, 3, 4, 5];
 
-console.log(arr.push("끝")); // 6
+console.log(arr.push('끝')); // 6
 console.log(arr); // [ 1, 2, 3, 4, 5, '끝' ]
 
-console.log(arr.unshift("앞")); // 7
+console.log(arr.unshift('앞')); // 7
 console.log(arr); // [ '앞', 1, 2, 3, 4, 5, '끝' ]
 ```
 
@@ -162,7 +163,7 @@ sum.reduce(function (a, b) {
 #### (3) 객체 내의 값 인스턴스 개수 세기
 
 ```javascript
-const arr = ["Python", "Javascript", "C", "Javascript", "Java"];
+const arr = ['Python', 'Javascript', 'C', 'Javascript', 'Java'];
 const count = arr.reduce(function (a, b) {
   if (b in a) {
     a[b]++;
@@ -174,4 +175,102 @@ const count = arr.reduce(function (a, b) {
 
 console.log(count);
 // -> { Python: 1, Javascript: 2, C: 1, Java: 1 }
+```
+
+## 5. substr(), substring(), slice()
+
+<br>
+
+<h3> (1) substr() </h3>
+
+`substr()` : 문자열에서 특정 위치에서 시작하여 특정 문자 수 만큼의 문자를 반환
+
+<br>
+<h3>구문</h3>
+
+`str.substr(start[, length])`
+
+<br>
+<h3>매개변수</h3>
+
+- `start` : 추출하려는 문자의 시작 위치. 음수일 경우 `문자열총길이 + start` 값으로 취급.
+- `length` : 옵션값, 추출할 문자들의 총 숫자. 0 혹은 음수이면, 빈 문자열을 반환한다. 생략되면 문자열의 끝까지 추출하여 반환한다.
+
+```javascript
+const string = '일이삼사오육칠팔구십';
+
+console.log(string.substr(1, 2)); // '이삼'
+console.log(string.substr(-4, 2)); // '칠팔'
+console.log(string.substr(-1)); // '십'
+console.log(string.substr(-4)); // '칠팔구십'
+console.log(string.substr(-20, 3)); // '일이삼'
+console.log(string.substr(20, 3)); // ''
+```
+
+<br>
+
+<h3> (1) substring() </h3>
+
+`substring()` : 문자열 객체의 시작 인덱스로부터 종료 인덱스 전까지 문자열의 부분 문자열을 반환한다.
+
+<br>
+<h3>구문</h3>
+
+`str.substring(indexStart[, indexEnd])`
+
+<br>
+<h3>매개변수</h3>
+
+- `indexStart` : 반환문자열의 시작 인덱스
+- `indexEnd` : 옵션. 반환 문자열의 마지막 인덱스(포함하지 않음)
+
+<br>
+<h3>반환값</h3>
+기존 문자열의 부분 문자열을 반환
+
+<br>
+<br>
+<h3> 설명 예시 </h3>
+
+- `indexEnd` 가 생략된 경우, substring() 문자열의 끝까지 모든 문자를 추출
+
+```javascript
+const anyString = 'AaBbCcDdEe';
+
+console.log(anyString.substring(4)); // 'CcDdEe'
+```
+
+<br>
+
+- `indexStart` 가 `indexEnd` 와 같을 경우, substring() 빈 문자열을 반환
+
+```javascript
+const anyString = 'AaBbCcDdEe';
+
+console.log(anyString.substring(3, 3)); // ''
+console.log(anyString.substring(4, 4)); // ''
+```
+
+<br>
+
+- `indexStart` 가 `indexEnd` 보다 큰 경우, substring() 은 두 개의 인자 순서를 바꾼 것처럼 작동
+
+```javascript
+const anyString = 'AaBbCcDdEe';
+
+console.log(anyString.substring(0, 1)); // 'A'
+console.log(anyString.substring(1, 0)); // 'A'
+```
+
+<br>
+
+- 0보다 작은 인자값을 가지는 경우에는 0으로 , string.length보다 큰 인자값을 가지는 경우에는 string.length로 처리.
+
+```javascript
+const anyString = 'AaBbCcDdEe';
+console.log(anyString.length); // 10
+
+console.log(anyString.substring(-1, 10)); // 'AaBbCcDdEe'
+console.log(anyString.substring(0, 10)); // 'AaBbCcDdEe'
+console.log(anyString.substring(0, 17)); // 'AaBbCcDdEe'
 ```
